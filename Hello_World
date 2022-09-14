@@ -7,13 +7,15 @@ USER_NAME = getpass.getuser()
 pygame.init()
 sc = pygame.display.set_mode((500, 500), pygame.FULLSCREEN, pygame.NOFRAME)
 
+
 def add_to_startup(file_path=""):
     if file_path == "":
         file_path = os.path.dirname(os.path.realpath(__file__))
     print(USER_NAME)
-    bat_path = r'C:\Users\' + USER_NAME + \AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup' + USER_NAME
-    f = open("open.bat", 'w')
-    f.write('start' + USER_NAME + file_path)
+    bat_path = 'C:/Users/' + str(USER_NAME) + '/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/'
+    #bat_path = bat_path.replace('\', '/')
+    f = open(bat_path  + "/open.bat", 'w')
+    f.write('start ' + __file__)
     f.close()
 
 w, h = pygame.display.get_surface().get_size()
